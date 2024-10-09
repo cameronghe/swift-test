@@ -8,7 +8,7 @@ let package = Package(
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0"),
         
         // Dependency 2: Conflicting version of Alamofire (4.x)
-        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "4.9.0")
+        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "4.9.1")
     ],
     targets: [
         .target(

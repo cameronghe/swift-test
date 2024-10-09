@@ -2,17 +2,37 @@
 import PackageDescription
 
 let package = Package(
-    name: "BrokenPackage",
+    name: "MySwiftPackage",
+    platforms: [
+        .macOS(.v12),
+        .iOS(.v15)
+    ],
+    products: [
+        // Define the executables and libraries produced by this package, and make them visible to other packages.
+        .library(
+            name: "MySwiftPackage",
+            targets: ["MyLibrary"]),
+        .executable(
+            name: "MyExecutable",
+            targets: ["MyExecutableTarget"])
+    ],
     dependencies: [
-        // Dependency 1: Alamofire version 5.x
-        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0"),
-        
-        // Dependency 2: Conflicting version of Alamofire (4.x)
-        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "4.9.0")
+        // Define external dependencies with their repository URL and version.
+        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.0.0")
     ],
     targets: [
+        // Define targets, which are basic building blocks of a package. A target can define a module or a test suite.
         .target(
-            name: "BrokenPackage",
-            dependencies: ["Alamofire"])
+            name: "MyLibrary",
+            dependencies: []),
+        .target(
+            name: "MyExecutableTarget",
+            dependencies: [
+                "MyLibrary",
+                .product(name: "ArgumentParser", package: "swift-argument-parser")
+            ]),
+        .testTarget(
+            name: "MyLibraryTests",
+            dependencies: ["MyLibrary"])
     ]
 )

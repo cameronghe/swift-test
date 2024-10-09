@@ -18,7 +18,7 @@ let package = Package(
     ],
     dependencies: [
         // Define external dependencies with their repository URL and version.
-        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.0.0")
+        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.5.0")
     ],
     targets: [
         // Define targets, which are basic building blocks of a package. A target can define a module or a test suite.
